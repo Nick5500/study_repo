@@ -1,6 +1,6 @@
 import { IsArray, IsInt, IsString } from 'class-validator';
 
-export class UpdateMovieDto {
+export class UpdateMovieDTO {
   @IsString()
   name?: string;
 
