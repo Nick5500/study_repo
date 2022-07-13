@@ -9,8 +9,8 @@ import {
   Put,
 } from '@nestjs/common';
 import { MovieService } from './movie.service';
-import { CreateMovieDto } from './dto/create-movie.dto';
-import { UpdateMovieDto } from './dto/update-movie.dto';
+import { CreateMovieDTO } from './dto/create-movie.dto';
+import { UpdateMovieDTO } from './dto/update-movie.dto';
 
 @Controller('movies')
 export class MovieController {
@@ -31,7 +31,7 @@ export class MovieController {
   }
 
   @Post()
-  async create(@Body() createMovieDto: CreateMovieDto): Promise<any> {
+  async create(@Body() createMovieDto: CreateMovieDTO): Promise<any> {
     const createdMovie = this.appService.create(createMovieDto);
 
     return createdMovie;
@@ -39,7 +39,7 @@ export class MovieController {
 
   @Put(':id')
   async update(
-    @Body() updateMovieDto: UpdateMovieDto,
+    @Body() updateMovieDto: UpdateMovieDTO,
     @Param('id', ParseIntPipe) id: number,
   ) {
     return this.appService.update(id, updateMovieDto);
