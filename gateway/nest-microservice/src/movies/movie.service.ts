@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom, map } from 'rxjs';
-import { CreateMovieDto } from './dto/create-movie.dto';
-import { UpdateMovieDto } from './dto/update-movie.dto';
+import { CreateMovieDTO } from './dto/create-movie.dto';
+import { UpdateMovieDTO } from './dto/update-movie.dto';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -26,13 +26,13 @@ export class MovieService {
     return lastValueFrom(axiosRes.pipe(map((response) => response.data.data)));
   }
 
-  create(movie: CreateMovieDto) {
+  create(movie: CreateMovieDTO) {
     const axiosRes = this.httpService.post(`${this.serverUrl}movie`, movie);
 
     return lastValueFrom(axiosRes.pipe(map((response) => response.data.data)));
   }
 
-  update(movieId: number, movie: UpdateMovieDto) {
+  update(movieId: number, movie: UpdateMovieDTO) {
     const axiosRes = this.httpService.put(
       `${this.serverUrl}movie/${movieId}`,
       movie,
